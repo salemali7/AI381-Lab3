@@ -1,5 +1,5 @@
 # Lab 3, Part 6 (local option): run the champion image on your own laptop.
-#   docker build --build-arg GIT_SHA=$(git rev-parse HEAD) -t churn-api:local .
+#   docker build --network host --build-arg GIT_SHA=$(git rev-parse HEAD) -t churn-api:local .
 #   docker compose -f docker-compose.deploy.yml up -d
 #   bash scripts/smoke_test.sh http://localhost:8000
 # "restart: unless-stopped" is the local version of self-healing: if the service crashes, Docker starts it again.
@@ -7,6 +7,5 @@
 services:
   api:
     image: ${IMAGE:-churn-api:local}
-    ports:
-      - "8000:8000"
+    network_mode: host
     restart: unless-stopped

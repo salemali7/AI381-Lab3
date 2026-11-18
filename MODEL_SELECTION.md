@@ -1,4 +1,4 @@
-﻿# Model selection
+# Model selection
 
 ## The question
 This model predicts whether a customer is likely to leave the service (churn).
